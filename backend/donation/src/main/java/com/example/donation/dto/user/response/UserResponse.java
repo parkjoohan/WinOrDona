@@ -5,20 +5,27 @@ import com.example.donation.domain.user.User;
 public class UserResponse {
 
     private long id;
-    private String loginId;
+    private String loginid;
     private String password;
     private String name;
 
-    public UserResponse(long id, String loginId, String password, String name) {
+    public UserResponse(long id, String loginid, String password, String name) {
         this.id = id;
-        this.loginId = loginId;
+        this.loginid = loginid;
         this.password = password;
         this.name = name;
     }
 
+    public UserResponse(User user) {
+        this.id = user.getId();
+        this.loginid = user.getLoginid();
+        this.password = user.getPassword();
+        this.name = user.getName();
+    }
+
     public UserResponse(long id, User user) {
         this.id = id;
-        this.loginId = user.getLoginId();
+        this.loginid = user.getLoginid();
         this.password = user.getPassword();
         this.name = user.getName();
     }
@@ -27,8 +34,8 @@ public class UserResponse {
         return id;
     }
 
-    public String getLoginId() {
-        return loginId;
+    public String getLoginid() {
+        return loginid;
     }
 
     public String getPassword() {

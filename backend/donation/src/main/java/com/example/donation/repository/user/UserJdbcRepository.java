@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class UserRepository {
+public class UserJdbcRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public UserRepository(JdbcTemplate jdbcTemplate) {
+    public UserJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -25,19 +25,19 @@ public class UserRepository {
         return jdbcTemplate.query(readSql, (rs, rowNum) -> 0, name).isEmpty();
     }
 
-    public void saveUser(String loginId, String password, String name) {
-        String sql = "INSERT INTO User (loginId, password, name) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, loginId, password, name);
+    public void saveUser(String loginid, String password, String name) {
+        String sql = "INSERT INTO User (loginid, password, name) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, loginid, password, name);
     }
 
     public List<UserResponse> getUsers() {
         String sql = "SELECT * FROM User";
         return jdbcTemplate.query(sql, (rs, rowNum) -> {
             long id = rs.getLong("id");
-            String loginId = rs.getString("loginId");
+            String loginid = rs.getString("loginid");
             String password = rs.getString("password");
             String name = rs.getString("name");
-            return new UserResponse(id, loginId, password, name);
+            return new UserResponse(id, loginid, password, name);
         });
     }
 
