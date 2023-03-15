@@ -4,7 +4,6 @@ import com.example.donation.dto.user.request.UserCreateRequest;
 import com.example.donation.dto.user.request.UserUpdateRequest;
 import com.example.donation.dto.user.response.UserResponse;
 import com.example.donation.service.user.UserService;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,11 +12,9 @@ import java.util.List;
 public class userController {
 
     private final UserService userService;
-    private final JdbcTemplate jdbcTemplate;
 
-    public userController(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-        this.userService = new UserService(jdbcTemplate);
+    public userController(UserService userService) {
+        this.userService = userService;
     }
 
     @PostMapping("/user")
