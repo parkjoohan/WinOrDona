@@ -4,34 +4,34 @@ import com.example.donation.domain.user.User;
 
 public class UserResponse {
 
-    private long id;
+    private long user_id;
     private String loginid;
     private String password;
     private String name;
 
-    public UserResponse(long id, String loginid, String password, String name) {
-        this.id = id;
+    public UserResponse(long user_id, String loginid, String password, String name) {
+        this.user_id = user_id;
         this.loginid = loginid;
         this.password = password;
         this.name = name;
     }
 
     public UserResponse(User user) {
-        this.id = user.getId();
+        this.user_id = user.getId();
         this.loginid = user.getLoginid();
         this.password = user.getPassword();
         this.name = user.getName();
     }
 
-    public UserResponse(long id, User user) {
-        this.id = id;
+    public UserResponse(long user_id, User user) {
+        this.user_id = user_id;
         this.loginid = user.getLoginid();
         this.password = user.getPassword();
         this.name = user.getName();
     }
 
     public long getId() {
-        return id;
+        return user_id;
     }
 
     public String getLoginid() {

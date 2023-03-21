@@ -15,9 +15,9 @@ public class UserJdbcRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public boolean isUserNotExist(long id) {
-        String readSql = "SELECT * FROM User WHERE id = ?";
-        return jdbcTemplate.query(readSql, (rs, rowNum) -> 0, id).isEmpty();
+    public boolean isUserNotExist(long user_id) {
+        String readSql = "SELECT * FROM User WHERE user_id = ?";
+        return jdbcTemplate.query(readSql, (rs, rowNum) -> 0, user_id).isEmpty();
     }
 
     public boolean isUserNotExist(String name) {
@@ -33,17 +33,17 @@ public class UserJdbcRepository {
     public List<UserResponse> getUsers() {
         String sql = "SELECT * FROM User";
         return jdbcTemplate.query(sql, (rs, rowNum) -> {
-            long id = rs.getLong("id");
+            long user_id = rs.getLong("user_id");
             String loginid = rs.getString("loginid");
             String password = rs.getString("password");
             String name = rs.getString("name");
-            return new UserResponse(id, loginid, password, name);
+            return new UserResponse(user_id, loginid, password, name);
         });
     }
 
-    public void updateUserName(String name, long id) {
+    public void updateUserName(String name, long user_id) {
         String sql = "UPDATE User SET name = ? WHERE id = ?";
-        jdbcTemplate.update(sql, name, id);
+        jdbcTemplate.update(sql, name, user_id);
     }
 
     public void deleteUserName(String name) {
