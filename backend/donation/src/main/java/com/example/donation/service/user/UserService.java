@@ -44,7 +44,7 @@ public class UserService {
         user.updateName(request.getName());
 
         // 영속성 컨텍스트의 변경 감지 기능으로 save 자동 실행
-        // userRepository.save(user);
+//         userRepository.save(user);
     }
 
     @Transactional

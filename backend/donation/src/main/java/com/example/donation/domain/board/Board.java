@@ -17,7 +17,7 @@ public class Board {
     private String content;
     @Column(nullable = false)
     private Long user_uid;
-    @Column(nullable = false)
+
     private String create_time;
     private String update_time;
 
@@ -28,6 +28,12 @@ public class Board {
         this.content = content;
         this.user_uid = user_uid;
         this.create_time = String.valueOf(create_time);
+    }
+
+    public void updateBoard(String title, String content, LocalDateTime update_time) {
+        this.title = title;
+        this.content = content;
+        this.update_time = String.valueOf(update_time);
     }
 
     public Long getBoardId() {

@@ -34,6 +34,11 @@ public class BoardJdbcRepository {
         });
     }
 
+//    public void updateBoardId(String boardId, long user_id) {
+//        String sql = "UPDATE User SET name = ? WHERE id = ?";
+//        jdbcTemplate.update(sql, name, user_id);
+//    }
+
     public void deleteBoardId(long boardId) {
         String sql = "DELETE FROM Board WHERE board_id = ?";
         jdbcTemplate.update(sql, boardId);

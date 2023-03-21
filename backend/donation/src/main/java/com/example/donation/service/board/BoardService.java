@@ -4,6 +4,8 @@ import com.example.donation.domain.board.Board;
 import com.example.donation.domain.board.BoardRepository;
 import com.example.donation.domain.user.User;
 import com.example.donation.dto.user.request.BoardCreateRequest;
+import com.example.donation.dto.user.request.BoardUpdateRequest;
+import com.example.donation.dto.user.request.UserUpdateRequest;
 import com.example.donation.dto.user.response.BoardResponse;
 import com.example.donation.dto.user.response.UserResponse;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,13 @@ public class BoardService {
         return boards.stream()
                 .map(BoardResponse::new)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void updateBoard(BoardUpdateRequest request) {
+        Board board = boardRepository.findByBoardId(request.getBoard_id()).orElseThrow(IllegalArgumentException::new);
+
+        board.updateBoard(request.getTitle(), request.getContent(), now);
     }
 
     @Transactional
