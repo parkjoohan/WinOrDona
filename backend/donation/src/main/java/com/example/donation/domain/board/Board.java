@@ -18,8 +18,9 @@ public class Board {
     private Long user_uid;
     @Column(nullable = false)
     private String create_time;
-
     private String update_time;
+
+    protected Board() {}
 
     public Board(String title, String content, Long user_uid, LocalDateTime create_time) {
         this.title = title;
