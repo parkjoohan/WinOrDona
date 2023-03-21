@@ -14,7 +14,7 @@ public class BoardResponse {
     private String update_time;
 
     public BoardResponse(Board board) {
-        this.board_id = board.getBoard_id();
+        this.board_id = board.getBoardId();
         this.title = board.getTitle();
         this.content = board.getContent();
         this.user_uid = board.getUser_uid();

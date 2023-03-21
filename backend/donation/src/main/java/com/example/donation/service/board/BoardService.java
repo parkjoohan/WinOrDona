@@ -35,4 +35,12 @@ public class BoardService {
                 .map(BoardResponse::new)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public void deleteBoard(long boardId) {
+        Board board = boardRepository.findByBoardId(boardId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        boardRepository.delete(board);
+    }
 }

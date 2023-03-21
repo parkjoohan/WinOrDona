@@ -34,4 +34,9 @@ public class BoardJdbcRepository {
         });
     }
 
+    public void deleteBoardId(long boardId) {
+        String sql = "DELETE FROM Board WHERE board_id = ?";
+        jdbcTemplate.update(sql, boardId);
+    }
+
 }

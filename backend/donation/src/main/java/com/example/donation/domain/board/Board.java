@@ -7,8 +7,9 @@ import java.time.LocalDateTime;
 public class Board {
 
     @Id
+    @Column(name = "board_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long board_id = null;
+    private Long boardId;
 
     @Column(nullable = false, length = 50)
     private String title;
@@ -29,8 +30,8 @@ public class Board {
         this.create_time = String.valueOf(create_time);
     }
 
-    public Long getBoard_id() {
-        return board_id;
+    public Long getBoardId() {
+        return boardId;
     }
 
     public String getTitle() {
