@@ -1,0 +1,28 @@
+.header_wrapper {
+    width: 100%;
+    height: 150px;
+    background-color: #272060;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_wrapper > div:nth-child(1) {
+    width: 10%;
+}
+
+.header_logo {
+    width: 80%;
+    text-align-last: center;
+}
+
+.logo {
+    width: 13%;
+    height: 80%;
+}
+
+.header_login {
+    width: 10%;
+    color: #b1b1b1;
+    text-align: center;
+}
